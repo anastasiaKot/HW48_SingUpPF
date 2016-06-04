@@ -46,16 +46,16 @@ a.titleValidationF(a.facebook_image_link_id);
 		a.getWeatherIcon();
 		a.getTemperature();
 		
-		a.firstNameE(a.button_submit, a.fname_error_id);
+		a.firstNameE();
 		
-		a.lastNameE(a.button_submit, a.fname_error_id,dataOfPerson[0]);
+		//a.lastNameE(dataOfPerson[0]);
 		
 		
 		a.getCopyrightText(a.copyright_id,a.PF.copyright_pf);
 		
 		//close url
 		//close WebDriver
-		a.after();
+		//a.after();
 
 		
 		//ConfirmationPage		
@@ -67,7 +67,7 @@ a.titleValidationF(a.facebook_image_link_id);
 		dataOfPerson=b.read2DimensionsArray(b.Read_CSV("./src/main/resources/ConfirmationPageV1.csv"), 1);
 //		
 //		//open url
-b.before();
+b.before(b.url_v1);
 b.enterData(dataOfPerson);
 
 //System.out.println(b.getValueField(b.conf_first_name_id,b.PF.fname_conf_pf));
@@ -81,7 +81,7 @@ b.checkAllFields(dataOfPerson);
 
 b.getCopyrightText(b.copyright_id,b.PF.copyright_pf);
 
-b.after();
+//b.after();
 	}
 
 }

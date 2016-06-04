@@ -1,0 +1,104 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for core:HW48_SingUpPF:jar:1.1
+[WARNING] 'version' contains an expression but should be a constant. @ core:HW48_SingUpPF:${yc.version}, C:\Workspace\HW48_SingUpPF\pom.xml, line 8, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building HW48_SingUpPF 1.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ HW48_SingUpPF ---
+[INFO] Deleting C:\Workspace\HW48_SingUpPF\target
+[INFO] 
+[INFO] --- maven-site-plugin:3.3:site (default-site) @ HW48_SingUpPF ---
+[INFO] configuring report plugin org.apache.maven.plugins:maven-surefire-report-plugin:2.19.1
+[INFO] 
+[INFO] >>> maven-surefire-report-plugin:2.19.1:report (report:report) > [surefire]test @ HW48_SingUpPF >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ HW48_SingUpPF ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ HW48_SingUpPF ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to C:\Workspace\HW48_SingUpPF\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ HW48_SingUpPF ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Workspace\HW48_SingUpPF\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ HW48_SingUpPF ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to C:\Workspace\HW48_SingUpPF\target\test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ HW48_SingUpPF ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running core.ConfirmationPageTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 13.878 sec - in core.ConfirmationPageTest
+Running core.SingUpPageTest
+[AppClassLoader@b4aac2] warning javax.* types are not being woven because the weaver option '-Xset:weaveJavaxPackages=true' has not been specified
+Tests run: 11, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 25.359 sec <<< FAILURE! - in core.SingUpPageTest
+testGetCityNeg(core.SingUpPageTest)  Time elapsed: 0.031 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<Sa[n Jose]> but was:<Sa[ratoga]>
+	at core.SingUpPageTest.testGetCityNeg(SingUpPageTest.java:72)
+
+testGetOS_Browser(core.SingUpPageTest)  Time elapsed: 0.047 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<Windows 7 & [IE 11]> but was:<Windows 7 & [Unknown Browser]>
+	at core.SingUpPageTest.testGetOS_Browser(SingUpPageTest.java:80)
+
+
+Results :
+
+Failed tests: 
+  SingUpPageTest.testGetCityNeg:72 expected:<Sa[n Jose]> but was:<Sa[ratoga]>
+  SingUpPageTest.testGetOS_Browser:80 expected:<Windows 7 & [IE 11]> but was:<Windows 7 & [Unknown Browser]>
+
+Tests run: 13, Failures: 2, Errors: 0, Skipped: 1
+
+[ERROR] There are test failures.
+
+Please refer to C:\Workspace\HW48_SingUpPF\target\surefire-reports for the individual test results.
+[INFO] 
+[INFO] <<< maven-surefire-report-plugin:2.19.1:report (report:report) < [surefire]test @ HW48_SingUpPF <<<
+[INFO] configuring report plugin org.apache.maven.plugins:maven-project-info-reports-plugin:2.9
+[INFO] configuring report plugin ru.yandex.qatools.allure:allure-maven-plugin:2.5
+[INFO] configuring report plugin org.apache.maven.plugins:maven-jxr-plugin:2.3
+[INFO] Relativizing decoration links with respect to project URL: http://maven.apache.org
+[INFO] Rendering site with org.apache.maven.skins:maven-default-skin:jar:1.0 skin.
+[INFO] Skipped "Surefire Report" report, file "surefire-report.html" already exists for the English version.
+[INFO] Skipped "Allure" report, file "allure-maven-plugin.html" already exists for the English version.
+[INFO] Skipped "Allure" report, file "allure-maven-plugin.html" already exists for the English version.
+[INFO] Skipped "Source Xref" report, file "xref/index.html" already exists for the English version.
+[INFO] Skipped "Test Source Xref" report, file "xref-test/index.html" already exists for the English version.
+[INFO] Generating "Surefire Report" report    --- maven-surefire-report-plugin:2.19.1
+[INFO] Generating "Dependencies" report    --- maven-project-info-reports-plugin:2.9
+[WARNING] The repository url 'http://download.java.net/maven/2/' is invalid - Repository 'maven2-repository.dev.java.net' will be blacklisted.
+[WARNING] The repository url 'http://google-gson.googlecode.com/svn/mavenrepo' is invalid - Repository 'gson' will be blacklisted.
+[WARNING] The repository url 'http://people.apache.org/repo/m2-snapshot-repository' is invalid - Repository 'apache.snapshots' will be blacklisted.
+[INFO] Generating "Dependency Convergence" report    --- maven-project-info-reports-plugin:2.9
+[INFO] Generating "Dependency Information" report    --- maven-project-info-reports-plugin:2.9
+[INFO] Generating "About" report    --- maven-project-info-reports-plugin:2.9
+[INFO] Generating "Plugin Management" report    --- maven-project-info-reports-plugin:2.9
+[INFO] Generating "Plugins" report    --- maven-project-info-reports-plugin:2.9
+[INFO] Generating "Summary" report    --- maven-project-info-reports-plugin:2.9
+[INFO] Generating "Allure" report    --- allure-maven-plugin:2.5
+[INFO] Generate Allure report (aggregate) with version RELEASE
+[INFO] Generate Allure report to C:\Workspace\HW48_SingUpPF\target/allure-report
+[INFO] Found results directory C:\Workspace\HW48_SingUpPF\target\allure-results
+[INFO] Generating "Source Xref" report    --- maven-jxr-plugin:2.3
+[INFO] Generating "Test Source Xref" report    --- maven-jxr-plugin:2.3
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:35 min
+[INFO] Finished at: 2016-06-04T04:03:14-07:00
+[INFO] Final Memory: 41M/200M
+[INFO] ------------------------------------------------------------------------

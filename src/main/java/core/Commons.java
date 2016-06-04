@@ -29,10 +29,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
-//PageFactory
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
@@ -81,12 +77,13 @@ public class Commons {
 	
 	String copyright_id=null;
 	String copyright_expected=null;
-			//"© 2016 learn2test.net";
 	String test_case_id = null;
 	
+	String OS_Browser_expected=null;
+	String  data_expected=currentData();
 	static int test_case_count=0; 
 	
-	WebDriver driver=null;
+	WebDriver driver;
 	String handle;
 	String parentHandle;
 	
@@ -101,6 +98,7 @@ public class Commons {
 	String icon_weather_actual=null;
 	String icon_weather_expected=null;
 	String tempTemp=null;
+	//float temp_expected=0.0f;
 	
 	String regex_icon_url=null;
 	String regex_temperature=null;
@@ -109,6 +107,8 @@ public class Commons {
 	String regex_city=null;
 	String regex_data=null;
 	String terms_expected=null;
+	
+	String button_reset=null;
 	
 	
 	SingUp_PageFactory PF = PageFactory.initElements(this.driver, SingUp_PageFactory.class);
@@ -173,6 +173,7 @@ public class Commons {
 				copyright_id = properties.getProperty ("copyright_id");
 				
 				copyright_expected = properties.getProperty ("copyright_text");
+				button_reset=properties.getProperty("button_reset");
 				
 				
 				//ifFileEmpty or not full	
@@ -217,7 +218,8 @@ public class Commons {
 						(erorr_phone_empty_expected==null) ||
 						(copyright_id==null) ||
 						
-						(copyright_expected==null)
+						(copyright_expected==null) ||
+						(button_reset==null)
 						) 
 					
 				{
@@ -879,20 +881,6 @@ public class Commons {
 							value_actual = pageFactory.getText();
 							//value_actual = driver.findElement(By.id(element_id)).getText(); 
 						break;
-						
-//						case "id_back_button":
-//							pageFactory.click();
-//							//driver.findElement(By.id(element_id)).click();	
-//							driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
-//						break;
-//						String state_actual = driver.findElement(By.id("id_state_conf")).getText();
-//						String gender_actual=driver.findElement(By.id("id_gender_conf")).getText();
-//						String terms_actual=driver.findElement(By.id("id_terms_conf")).getText();	
-
-						
-//						case "conf_button_back":
-//							value_actual = driver.findElement(By.id(element_id)).getText(); 
-//						break;	
 						}
 					
 						
@@ -919,8 +907,7 @@ public class Commons {
 					{
 						String copyright_actual=null;
 						test_case_count++;
-						//System.out.println(copyright_expected);
-						//System.out.println(copyright_expected.substring(1, copyright_expected.length()));
+
 						copyright_expected=copyright_expected.substring(1, copyright_expected.length());
 						
 						
@@ -928,27 +915,14 @@ public class Commons {
 						copyright_actual = getValueField(element_id, pageFactory);
 						if (copyright_expected.equals(copyright_actual))
 						{
-						//System.out.println(copyright_actual);
 
-						System.out.println(">>>>....");
-						System.out.println("Test Case ID: \t\t"+test_case_id+test_case_count+" - PASSED");
-						System.out.println("CopyRight Expected/Actual: \t" + copyright_expected+" / "+copyright_actual);
-						
-						System.out.println("....<<<<");
-						System.out.println();
 						return true;	
-					} else {
-						System.out.println(">>>>....");
-						System.out.println("Test Case ID: \t\t" +test_case_id+test_case_count+ " - FAILED");
-						System.out.println("CopyRight Expected/Actual: \t" + copyright_expected+" / "+copyright_actual);
-						
-						System.out.println("....<<<<");
-						System.out.println();
-					}
+					} 
+
 
 					} catch(NoSuchElementException e)
 					{
-							System.out.println("Test Case ID: \t\t" +test_case_id+test_case_count+ " - BLOCK");
+							System.out.println("Method getCopyrightText()  - BLOCK");
 							System.out.println();
 							System.out.println(e.getMessage());
 					}		
@@ -956,7 +930,7 @@ public class Commons {
 					}
 
 					
-					public void after(){
+					public void after(WebDriver driver){
 						
 						driver.close();
 						driver.quit();

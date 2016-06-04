@@ -13,27 +13,16 @@
 
 package core;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-
-import org.apache.commons.logging.LogFactory;
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 
 public class ConfirmationPage extends Commons{
@@ -62,7 +51,7 @@ public class ConfirmationPage extends Commons{
 	String gender_conf=null;
 	String terms_conf=null;
 	
-	String button_reset=null;
+	//String button_reset=null;
 	
 
 	
@@ -99,6 +88,7 @@ public class ConfirmationPage extends Commons{
 	        this.driver = parent;
 	        PF=PageFactory.initElements(this.driver, ConfirmationPage_PageFactory.class);
 	        //this.copyright_id=super.copyright_id;
+	        //this.after();
 	        }
 
 	//Constructor 2	
@@ -106,6 +96,7 @@ public class ConfirmationPage extends Commons{
 		{
 	        this.driver = parent;
 	        PF=PageFactory.initElements(this.driver, ConfirmationPage_PageFactory.class);
+	        //this.after();
 	        //String test_case_id = "TC-002.0";
 	      //  this.copyright_id=super.copyright_id;
 	        if (HTMLunit)
@@ -178,19 +169,15 @@ public class ConfirmationPage extends Commons{
 							(state_id==null) ||
 							(state_conf==null) ||
 							(gender_conf==null) ||
+							
 							(terms_conf==null) ||
 							(copyright_id==null) ||
-							
 							(copyright_expected==null)
 						)
 					{
 						System.out.println("Warning File is Empty or not correct ! --> \""+file_path+"\""); System.exit(1);
 						}
 
-//					else
-//					{
-//						System.out.println("File read completed!");
-//					}
 					
 					} 
 	 
@@ -211,21 +198,21 @@ public class ConfirmationPage extends Commons{
 		
 
 		
-		public void before()
+		public void before(String url)
 		{
-			driver.get(url_v1);
+			driver.get(url);
 			driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 		}
 
 		//Enter data
 		
 		
-		public void after(){
-			
-			driver.close();
-			driver.quit();
-			System.out.println("All Test Cases - DONE");
-}		
+//		public void after(){
+//			
+//			driver.close();
+//			driver.quit();
+//			System.out.println("All Test Cases - DONE");
+//}		
 		
 	
 		
@@ -311,7 +298,7 @@ public class ConfirmationPage extends Commons{
 //last name- data[1]
 //email- data[2]
 //phone  -data[3]
- * 
+//gender - data[4]
 //state - data[5]
 //Agreed - data[6]
  * 
@@ -326,41 +313,9 @@ public class ConfirmationPage extends Commons{
 				(terms_expected.equals(terms_actual))
 				)
 		{
-			System.out.println(">>>>....");
-			System.out.println("Test Case ID: \t\t" + test_case_id+test_case_count+ " - PASSED");
-			System.out.println("First name Expected/Actual: \t" + data[0]+" / "+fname_actual);
-			
-			System.out.println("Last name Expected/Actual: \t" + data[1]+" / "+lname_actual);
-			System.out.println("Email Expected/Actual: \t" + data[2] +" / "+email_actual);
-			System.out.println("Phone Expected/Actual: \t" + data[3] +" / "+phone_actual);
-			System.out.println("State Expected/Actual: \t" + data[5] +" / "+state_actual);
-			
-			System.out.println("Gender Expected/Actual: \t" + gender_expected+" / "+gender_actual);
-			System.out.println("Terms? Expected/Actual: \t" + terms_expected+" / "+terms_actual);
-			System.out.println("....<<<<");
-			
-			System.out.println();
 			return true;
 		}
-		
-		else
-		{
-			System.out.println(">>>>....");
-			System.out.println("Test Case ID: \t\t" + test_case_id+test_case_count+ " - FAILED");
-			System.out.println("First name Expected/Actual: \t" + data[0]+" / "+fname_actual);
 			
-			System.out.println("Last name Expected/Actual: \t" + data[1]+" / "+lname_actual);
-			System.out.println("Email Expected/Actual: \t" + data[2]+" / "+email_actual);
-			System.out.println("Phone Expected/Actual: \t" + data[3]+" / "+phone_actual);
-			System.out.println("State Expected/Actual: \t" + data[5] +" / "+state_actual);
-			
-			System.out.println("Gender Expected/Actual: \t" + gender_expected+" / "+gender_actual);
-			System.out.println("Terms? Expected/Actual: \t" + terms_expected+" / "+terms_actual);
-			
-			System.out.println("....<<<<");
-			System.out.println();	
-		}
-//END	TC-002.01	
 			
 			return false;
 		}	
@@ -370,8 +325,6 @@ public class ConfirmationPage extends Commons{
 		{
 			String copyright_actual=null;
 			test_case_count++;
-			//System.out.println(copyright_expected);
-			//System.out.println(copyright_expected.substring(1, copyright_expected.length()));
 			copyright_expected=copyright_expected.substring(1, copyright_expected.length());
 			
 			
@@ -379,24 +332,9 @@ public class ConfirmationPage extends Commons{
 			copyright_actual = getValueField(element_id, pageFactory);
 			if (copyright_expected.equals(copyright_actual))
 			{
-			//System.out.println(copyright_actual);
-
-			System.out.println(">>>>....");
-			System.out.println("Test Case ID: \t\t"+this.test_case_id+test_case_count+" - PASSED");
-			System.out.println("CopyRight Expected/Actual: \t" + copyright_expected+" / "+copyright_actual);
-			
-			System.out.println("....<<<<");
-			System.out.println();
 			return true;	
-		} else {
-			System.out.println(">>>>....");
-			System.out.println("Test Case ID: \t\t" +this.test_case_id+test_case_count+ " - FAILED");
-			System.out.println("CopyRight Expected/Actual: \t" + copyright_expected+" / "+copyright_actual);
-			
-			System.out.println("....<<<<");
-			System.out.println();
-		}
-
+		} 
+		
 		} catch(NoSuchElementException e)
 		{
 				System.out.println("Test Case ID: \t\t" +this.test_case_id+test_case_count+ " - BLOCK");
